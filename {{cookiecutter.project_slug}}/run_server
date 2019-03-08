@@ -4,6 +4,7 @@ import sys
 from watchgod import watch
 import os
 sys.path.append(".")
+from subprocess import PIPE
 from setup import _CONFIG
 port = sys.argv[2] if sys.argv[1:] else "8080"
 module_root = os.path.join(os.path.abspath('./src'), _CONFIG['name'])
