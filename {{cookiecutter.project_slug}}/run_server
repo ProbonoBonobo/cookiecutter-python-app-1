@@ -5,9 +5,15 @@ from watchgod import watch
 import os
 sys.path.append(".")
 from setup import _CONFIG
-
+port = sys.argv[2] if sys.argv[1:] else "8080"
 module_root = os.path.join(os.path.abspath('./src'), _CONFIG['name'])
 worker = os.path.abspath('update_docs')
+def init_server():
+    cmd = f"python3 -m http.server {port} &"
+    out = subprocess.run(cmd, stdout=PIPE, stderr=PIPE, shell=True)
+    return 
+
+init_server()
 for changes in watch(module_root):
   out = subprocess.run(worker, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
   

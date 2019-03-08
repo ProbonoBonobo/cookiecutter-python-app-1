@@ -115,7 +115,7 @@ class UpdateCommand(_CustomCommand):
         return
 
 def initialize_autodocs():
-    cmd = f"""cd docs && sphinx-apidoc -o source/ \"../{_CONFIG['name']}\" """
+    cmd = f"""cd docs && sphinx-apidoc -o source/ \"../{_CONFIG['name']}\" && make html"""
     ok = False
     try:
         out = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
