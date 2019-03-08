@@ -1,5 +1,6 @@
-## Python requirements for using the {{ cookiecutter.app_name }} application.
+## Python requirements for using the pyapp application.
 ##
 ##    pip install --requirement=requirements.txt
 ##
 PyYAML>=3.11
+

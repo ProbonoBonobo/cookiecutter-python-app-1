@@ -5,5 +5,5 @@
     "author_name": "",
     "author_email": "",
     "project_version": "0.1.0.dev0",
-    "sphinx_theme": "alabaster"
+    "sphinx_theme": "sphinx_rtd_theme"
 }
