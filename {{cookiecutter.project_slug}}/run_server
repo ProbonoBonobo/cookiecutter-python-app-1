@@ -2,11 +2,12 @@
 import subprocess
 import sys
 from watchgod import watch
+import os
 sys.path.append(".")
 from setup import _CONFIG
 
-module_root = os.path.join(_CONFIG['package_dir'], _CONFIG['name'])
-worker = os.path.join(_CONFIG['package_dir'], 'update_docs')
+module_root = os.path.join(os.path.abspath('./src'), _CONFIG['name'])
+worker = os.path.join(os.path.abspath('./src'), 'update_docs')
 for changes in watch(module_root):
   out = subprocess.run(worker, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
   

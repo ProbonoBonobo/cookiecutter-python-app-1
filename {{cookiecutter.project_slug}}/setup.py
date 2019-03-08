@@ -114,6 +114,17 @@ class UpdateCommand(_CustomCommand):
         log.info("package version is now {:s}".format(_version()))
         return
 
+def initialize_autodocs():
+    cmd = f"""cd docs && sphinx-apidoc -o source/ \"../{_CONFIG['name']}\" """
+    ok = False
+    try:
+        out = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        ok = out.exitcode == 0
+    except:
+        ok = False
+    if not ok:
+        print(f"Failed to initialize autodocs. Try installing sphinx-apidoc if you haven't already")
+    return ok
 
 def main():
     """ Execute the setup commands.
@@ -122,6 +133,7 @@ def main():
     _CONFIG["version"] = _version()
     _CONFIG["cmdclass"] = {"update": UpdateCommand}
     setup(**_CONFIG)
+    initialize_autodocs
     return 0
 
 
