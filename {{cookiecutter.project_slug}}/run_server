@@ -7,7 +7,7 @@ sys.path.append(".")
 from setup import _CONFIG
 
 module_root = os.path.join(os.path.abspath('./src'), _CONFIG['name'])
-worker = os.path.join(os.path.abspath('./src'), 'update_docs')
+worker = os.path.abspath('update_docs')
 for changes in watch(module_root):
   out = subprocess.run(worker, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
   
